@@ -65,7 +65,9 @@ ALAssetsFilter * ALAssetsFilterFromDNImagePickerControllerFilterType(DNImagePick
                  *stop = YES;
                  NSURL *assetsGroupURL = [assetsGroup valueForProperty:ALAssetsGroupPropertyURL];
                  DNAlbumTableViewController *albumTableViewController = [[DNAlbumTableViewController alloc] init];
+                 albumTableViewController.imagePickerSeletedMax = _imagePickerSeletedMax;
                  DNImageFlowViewController *imageFlowController = [[DNImageFlowViewController alloc] initWithGroupURL:assetsGroupURL];
+                 imageFlowController.imagePickerSeletedMax = _imagePickerSeletedMax;
                  [self setViewControllers:@[albumTableViewController,imageFlowController]];
              }
          }
@@ -85,6 +87,7 @@ ALAssetsFilter * ALAssetsFilterFromDNImagePickerControllerFilterType(DNImagePick
 - (void)showAlbumList
 {
     DNAlbumTableViewController *albumTableViewController = [[DNAlbumTableViewController alloc] init];
+    albumTableViewController.imagePickerSeletedMax = _imagePickerSeletedMax;
     [self setViewControllers:@[albumTableViewController]];
 }
 

@@ -10,4 +10,6 @@
 
 @interface DNAlbumTableViewController : UITableViewController
 
+@property (nonatomic, assign) NSInteger imagePickerSeletedMax;
+
 @end

@@ -10,5 +10,7 @@
 #import <AssetsLibrary/AssetsLibrary.h>
 @interface DNImageFlowViewController : UIViewController
 
+@property (nonatomic, assign) NSInteger imagePickerSeletedMax;
+
 - (instancetype)initWithGroupURL:(NSURL *)assetsGroupURL;
 @end

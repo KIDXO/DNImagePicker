@@ -225,13 +225,16 @@ static NSString* const dnAssetsViewCellReuseIdentifier = @"DNAssetsViewCell";
     }
     UIBarButtonItem *firstItem = self.toolbarItems.firstObject;
     firstItem.enabled = YES;
-    if (self.selectedAssetsArray.count >= kDNImageFlowMaxSeletedNumber) {
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NSLocalizedStringFromTable(@"alertTitle", @"DNImagePicker", nil) message:NSLocalizedStringFromTable(@"alertContent", @"DNImagePicker", nil) delegate:self cancelButtonTitle:NSLocalizedStringFromTable(@"alertButton", @"DNImagePicker", nil) otherButtonTitles:nil, nil];
+    if (self.selectedAssetsArray.count >= _imagePickerSeletedMax) {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NSLocalizedStringFromTable(@"alertTitle", @"DNImagePicker", nil)
+                                                        message:[NSString stringWithFormat:@"最多选择%ld张图片",(long)_imagePickerSeletedMax]
+                                                       delegate:self
+                                              cancelButtonTitle:NSLocalizedStringFromTable(@"alertButton", @"DNImagePicker", nil)
+                                              otherButtonTitles:nil, nil];
         [alert show];
-        
         return NO;
-    }else
-    {
+    }
+    else {
         [self addAssetsObject:asset];
         self.sendButton.badgeValue = [NSString stringWithFormat:@"%@",@(self.selectedAssetsArray.count)];
         return YES;
